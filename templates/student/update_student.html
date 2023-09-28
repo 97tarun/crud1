@@ -1,0 +1,115 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+
+    <title>Update Student</title>
+</head>
+
+<body>
+    {% include 'student/navbar.html' %}
+    <h1 class="text-center my-2">Update Student</h1>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-6 offset-md-3">
+                <div class="card bg-light">
+                    <div class="card-body">
+                        <form action="" method="post" enctype="multipart/form-data">
+                            {% csrf_token %}    
+                            <div class="md-3">
+                                <label for="name">Name</label>
+                                <input type="text" name="name" id="name" class="form-control" required
+                                    value="{{std.name}}">
+                            </div>
+                            <div class="md-3">
+                                <label for="name">Email</label>
+                                <input type="text" name="email" id="email" class="form-control" required
+                                    value="{{std.email}}">
+                            </div>
+                            <div class="md-3">
+                                <label for="name">Password</label>
+                                <input type="text" name="password" id="password" class="form-control" required
+                                    value="{{std.password}}">
+                            </div>
+                            <div class="md-3">
+                                <label for="name">Mobile No.</label>
+                                <input type="text" name="phone" id="phone" class="form-control" required
+                                    value="{{std.phone}}">
+                            </div>
+
+                            <div class=" form-group md-3">
+                                <label>Gender </label>
+                                <input type="radio" name="gender" value="Male" class="mx-3" {% if std.gender == 'Male' %}checked{% endif %}>
+                                <label>Male</label>
+                                <input type="radio" name="gender" value="Female" class="mx-3" {% if std.gender == 'Female' %}checked{% endif %}>
+                                <label>Female</label>
+
+                            </div>
+                            <div class="md-3">
+                                <label for="name" class="checkbox-inline" required>City<br></label>
+                                    <input type="checkbox" name="city" id="city" value="Delhi" class="mx-3" {% if std.city == 'Delhi' %}checked{% endif %}><label>Delhi</label>
+                                    <input type="checkbox" name="city" id="city" value="Mumbai"
+                                        class="mx-3" {% if std.city == 'Mumbai' %}checked{% endif %}><label>Mumbai</label>
+                                    <input type="checkbox" name="city" id="city" value="Hyderabad"
+                                        class="mx-3" {% if std.city == 'Hyderabad' %}checked{% endif %}><label>Hyderabad</label>
+                                    <input type="checkbox" name="city" id="city" value="Chandigarh"
+                                        class="mx-3" {% if std.city == 'Chandigarh' %}checked{% endif %}><label>Chandigarh</label>
+                                    <input type="checkbox" name="city" id="city" value="Gurgaon"
+                                        class="mx-3" {% if std.city == 'Gurgaon' %}checked{% endif %}><label>Gurgaon</label>
+                                
+                            </div>
+                            <div class="md-3">
+                                <label>Photo</label>
+                                {% if std.Img %}
+                                <small>Currently: <br>
+                                    <a href="{{ std.Img.url }}">{{ std.Img.url }}</a></small>
+                                {% else %}
+                                <small>Currently: No image chosen</small>
+                                {% endif %}
+                                <small><br>Change:</small><br>
+                                <input name="img" type="file" id="image-input" class="form-control">
+                            </div>
+                            <div class="md-3">
+                                <label>Resume</label>
+                                {% if std.Resume %}
+                                <small>Currently:<br>
+                                    <a href="{{ std.Resume.url }}">{{ std.Resume.url }}</a></small>
+                                {% else %}
+                                <small>Currently: No resume chosen</small>
+                                {% endif %}
+                                <small><br>Change:</small>
+                                <input name="resume" type="file" id="resume-input" class="form-control">
+                            </div>
+                            <div class="container text-center my-1">
+                                <button class="btn btn-success">Update Student</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+    <!-- Optional JavaScript; choose one of the two! -->
+
+    <!-- Option 1: Bootstrap Bundle with Popper -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+        crossorigin="anonymous"></script>
+
+    <!-- Option 2: Separate Popper and Bootstrap JS -->
+    <!--
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js" integrity="sha384-IQsoLXl5PILFhosVNubq5LC7Qb9DXgDA9i+tQ8Zj3iwWAwPtgFTxbJ8NT4GN1R8p" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.min.js" integrity="sha384-cVKIPhGWiC2Al4u+LWgxfKTRIcfu0JTxR+EQDz/bgldoEyl4H0zUF0QKbrJ0EcQF" crossorigin="anonymous"></script>
+    -->
+</body>
+
+</html>
